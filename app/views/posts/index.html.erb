@@ -1,0 +1,16 @@
+<div id="post-wrapper">
+  <%
+    @posts.each do |p|
+  %>
+    <div class="post">
+      <div class="icon">
+        <img width="50" src="http://i306.photobucket.com/albums/nn252/cebong_ipit/ALL%20EMOTICON/Yokie/yk25.gif"/>
+      </div>
+      <div class="content">
+        <%= p.content %>
+      </div>
+    </div>
+  <%
+    end
+  %>
+</div>
