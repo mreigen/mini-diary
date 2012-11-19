@@ -25,7 +25,13 @@
         if p.blank?
         %>
           <div class="content no-data">
-            Click to create an entry
+            <a onclick="javascript:showPostBox(this);">Click to create an entry</a>
+          </div>
+          <div class="post-box">
+            <form accept-charset="UTF-8" action="/posts/new_post" method="post">
+              <textarea cols="0" id="comments_text" name="comments[text]" rows="3"></textarea>
+              <button id="post-button" class="btn btn-primary">Post</button>
+            </form>
           </div>
         <% else %>
           <div class="content">
@@ -38,3 +44,12 @@
     end
   %>
 </div>
+
+<script type="text/javascript">
+  function showPostBox(link) {
+    $link = $(link);
+    $link.parent().parent().children(".post-box").show();
+    
+    $link.parent().hide();
+  }
+</script>
