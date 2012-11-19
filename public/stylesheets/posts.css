@@ -1,3 +1,44 @@
+@font-face {
+  font-family: journal;
+  src: url('/fonts/journal.ttf');
+}
+
+@font-face {
+  font-family: "tangerine";
+  src: url('/fonts/Tangerine_Regular.ttf');
+}
+
+@font-face {
+  font-family: "quicksand";
+  src: url('/fonts/Quicksand_Light.otf');
+}
+
+#month-nav {
+  padding: 5px 0 5px 0;
+  position: fixed;
+  height: 40px;
+  width: 100%;
+  top: 0px;
+  z-index: 9999;
+  box-shadow: 1px 0px 10px #888;
+  
+  background: #F2F5F6;
+  background: -moz-linear-gradient(top, #F2F5F6 0%, #E3EAED 37%, #C8D7DC 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F2F5F6), color-stop(37%,#E3EAED), color-stop(100%,#C8D7DC));
+  background: -webkit-linear-gradient(top, #F2F5F6 0%,#E3EAED 37%,#C8D7DC 100%);
+  background: -o-linear-gradient(top, #F2F5F6 0%,#E3EAED 37%,#C8D7DC 100%);
+  background: -ms-linear-gradient(top, #F2F5F6 0%,#E3EAED 37%,#C8D7DC 100%);
+  background: linear-gradient(to bottom, #F2F5F6 0%,#E3EAED 37%,#C8D7DC 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 );
+}
+
+#month-nav .month-name {
+  font-size: 38px;
+  padding: 10px;
+  width: 200px;
+  margin: 0 auto;  
+}
+
 #post-wrapper {
   width: 600px;
   margin: 40px auto;
@@ -5,22 +46,42 @@
 
 #post-wrapper .post {
   padding: 10px 0 10px 15px;
-  border: 1px solid #DDD;
   margin: 10px;
   border-radius: 5px;
   width: 100%;
-  height: 40px;
+  height: 145px;
+}
+
+#post-wrapper .post .left-col {
+  width: 108px;
+  position: relative;
+  float: left;
 }
 
 #post-wrapper .post .content {
+  font-family: "quicksand";
   position: relative;
   float: left;
-  padding-left: 10px;
-  width: 500px;
+  padding: 10px;
+  width: 450px;
+  font-size: 30px;
+  line-height: 34px;
+  min-height: 100px;
+}
+
+#post-wrapper .post .no-data {
+  color: #ddd;
 }
 
 #post-wrapper .post .icon {
-  width: 50px;
+  width: 110px;
   position: relative;
   float: left;
+}
+
+#post-wrapper .post .time {
+  position: relative;
+  float: left;
+  padding: 26px 0px 5px 15px;
+  font-size: 24px;
 }
