@@ -1,0 +1,18 @@
+<div class="new-post-box">
+  <h4>How was your day?</h4>
+  <textarea name="post[content]" cols="0" rows="5"></textarea>
+  <button class="btn btn-large" onclick="javascript: submitNewPost(this);">Post</button>
+</div>
+
+<script type="text/javascript">
+  function submitNewPost(ele) {
+    $eleParent = $(ele).parent();
+    
+    // hides the textarea and button
+    $eleParent.children().hide();
+    
+    $newContent = $("<div class='content'></div>");
+    $newContent.html($eleParent.children("textarea").val());
+    $eleParent.prepend($newContent);
+  }
+</script>
