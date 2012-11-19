@@ -1,13 +1,37 @@
+<div id="month-nav">
+  <div class="month-name">
+    <%= Time.new.strftime("%B") %>
+  </div>
+</div>
 <div id="post-wrapper">
   <%
-    @posts.each do |p|
+    current_year = Time.new.year
+    current_month = Time.new.month
+    Time.days_in_month(current_month, current_year).times do |d|
+      time = Time.local(current_year, current_month, d + 1)
   %>
     <div class="post">
-      <div class="icon">
-        <img width="50" src="http://i306.photobucket.com/albums/nn252/cebong_ipit/ALL%20EMOTICON/Yokie/yk25.gif"/>
+      <div class="left-col">
+        <div class="icon">
+          <img width="110" src="http://i306.photobucket.com/albums/nn252/cebong_ipit/ALL%20EMOTICON/Yokie/yk25.gif"/>
+        </div>
+        <div class="time">
+          <%= time.strftime("%a %d") %>
+        </div>
       </div>
-      <div class="content">
-        <%= p.content %>
+      <div class="right-col">
+        <%
+        p = Post.by_date(current_year, current_month, d + 1).first 
+        if p.blank?
+        %>
+          <div class="content no-data">
+            Click to create an entry
+          </div>
+        <% else %>
+          <div class="content">
+            <%= p.content %>
+          </div>
+        <% end %>
       </div>
     </div>
   <%
