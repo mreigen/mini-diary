@@ -4,19 +4,6 @@
   <input id="asshole-name" name="post[asshole_name]" type="text" placeholder="who (boss, dentist, tail-gater, land lord...)"></input>
   <span>,</span>
   <textarea name="post[content]" cols="0" rows="5"></textarea>
-  <button class="btn btn-large" onclick="javascript: submitNewPost(this);">Post</button>
+  <button class="btn btn-large">Post</button>
   <% end %>
 </div>
-
-<script type="text/javascript">
-  function submitNewPost(ele) {
-    $eleParent = $(ele).parent();
-    
-    // hides the textarea and button
-    $eleParent.children().hide();
-    
-    $newContent = $("<div class='content'></div>");
-    $newContent.html($eleParent.children("textarea").val());
-    $eleParent.prepend($newContent);
-  }
-</script>

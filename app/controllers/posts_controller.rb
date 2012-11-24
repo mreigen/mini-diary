@@ -27,12 +27,11 @@ class PostsController < ApplicationController
     })
     
     @post = Post.create(data)
-    respond_to do |format|
-      if @post.save
-        flash[:notice] = "Congrats! Your letter to the asshole has been saved!"
-        @posts = Post.by_user(current_user)
-        format.html { render :action => "index", :collection => @posts }
-      else
+    if @post.save
+      flash[:notice] = "Congrats! Your letter to the asshole has been saved!"
+      redirect_to user_path(current_user.id)
+    else
+      respond_to do |format|
         flash[:error] = "Something went wrong while saving your letter"
         format.html { render :action => "new" }
       end

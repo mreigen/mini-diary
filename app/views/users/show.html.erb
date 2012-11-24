@@ -1,7 +1,12 @@
-<div id="content-wrapper">
-  <div id="inner-wrapper">
-    <div id="contributor">User: <%= @user.email %></div>
-    <div id="video-list-wrapper" class="widget"></div>
-    <div id="instruction">Please click on one of the videos on the left to view its content</div>
-  </div>
+<div id="post-wrapper">
+  <h4>So many assholes, so little time...</h4>
+  <% @posts.each do |p| %>
+    <div class="content">
+      <%= p.created_at.strftime("%b %d, %Y") %>
+      <br/>
+      Dear asshole <%= p.asshole_name %>, 
+      <br/>
+      <%= p.content %>
+    </div>
+  <% end %>
 </div>
