@@ -1,7 +1,5 @@
 tmp/*
 
-*.lock
-
 app/helpers/.DS_Store
 
 app/helpers/.svn/entries
