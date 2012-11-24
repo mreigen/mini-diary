@@ -11,6 +11,9 @@
     <div class="navbar-inner">
       <div class="container">
       <ul class="nav">
+        <li>
+          <%= link_to "Encountered new asshole today?", new_post_path %>
+        </li>
         <%
         if current_user.blank?
         %>
@@ -24,7 +27,7 @@
         else
         %>
           <li>
-          <%= link_to "You are logged in as #{current_user.email}.", user_path(current_user) %>
+          <%= link_to "Hey #{current_user.email}.", user_path(current_user) %>
           </li>
           <li>
           <%= link_to "Log out", "/users/sign_out" %>
