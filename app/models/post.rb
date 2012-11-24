@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   has_one :icon
   
   scope :by_user, (lambda do |user|
-    where("user_id = ?", user.id) unless user.blank?
+    where("user_id = ?", user.id).order("created_at DESC") unless user.blank?
   end)
   
   scope :by_month, (lambda do |month|
