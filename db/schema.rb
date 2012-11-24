@@ -12,35 +12,11 @@
 
 ActiveRecord::Schema.define(:version => 20121118090422) do
 
-  create_table "comments", :force => true do |t|
-    t.string   "title",                :limit => 50, :default => ""
-    t.text     "comment",                            :default => ""
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.integer  "user_id"
-    t.integer  "timestamped_entry_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
-  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
   create_table "posts", :force => true do |t|
     t.string   "user_id"
     t.text     "content"
+    t.string   "asshole_name"
     t.string   "icon_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "timestamped_entries", :force => true do |t|
-    t.integer  "video_id"
-    t.string   "ip",         :limit => 24
-    t.integer  "user_id"
-    t.float    "start_time"
-    t.float    "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,14 +39,5 @@ ActiveRecord::Schema.define(:version => 20121118090422) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "videos", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "guid"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

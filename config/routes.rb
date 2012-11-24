@@ -5,5 +5,6 @@ VideoCloud::Application.routes.draw do
   resources :users
   resources :posts
   
-  root :to => "posts#index"
+  match "posts/new" => "posts#create"
+  root :to => "posts#new"
 end

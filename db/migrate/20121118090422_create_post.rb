@@ -3,6 +3,7 @@ class CreatePost < ActiveRecord::Migration
     create_table(:posts) do |t|
       t.string :user_id
       t.text :content
+      t.string :asshole_name
       t.string :icon_id
       
       t.timestamps

@@ -2,6 +2,10 @@ class Post < ActiveRecord::Base
   has_one :user
   has_one :icon
   
+  scope :by_user, (lambda do |user|
+    where("user_id = ?", user.id) unless user.blank?
+  end)
+  
   scope :by_month, (lambda do |month|
     where("extract(month from created_at) = ?", month) unless month.blank?
   end)

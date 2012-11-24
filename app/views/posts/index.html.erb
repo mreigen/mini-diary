@@ -1,48 +1,18 @@
 <div id="month-nav">
   <div class="month-name">
-    <%= Time.new.strftime("%B") %>
+    History
   </div>
 </div>
 <div id="post-wrapper">
-  <%
-    current_year = Time.new.year
-    current_month = Time.new.month
-    Time.days_in_month(current_month, current_year).times do |d|
-      time = Time.local(current_year, current_month, d + 1)
-  %>
-    <div class="post">
-      <div class="left-col">
-        <div class="icon">
-          <img width="110" src="http://i306.photobucket.com/albums/nn252/cebong_ipit/ALL%20EMOTICON/Yokie/yk25.gif"/>
-        </div>
-        <div class="time">
-          <%= time.strftime("%a %d") %>
-        </div>
-      </div>
-      <div class="right-col">
-        <%
-        p = Post.by_date(current_year, current_month, d + 1).first 
-        if p.blank?
-        %>
-          <div class="content no-data">
-            <a onclick="javascript:showPostBox(this);">Click to create an entry</a>
-          </div>
-          <div class="post-box">
-            <form accept-charset="UTF-8" action="/posts/new_post" method="post">
-              <textarea cols="0" id="post_content" name="post[content]" rows="3"></textarea>
-              <button id="post-button" class="btn btn-primary">Post</button>
-            </form>
-          </div>
-        <% else %>
-          <div class="content">
-            <%= p.content %>
-          </div>
-        <% end %>
-      </div>
+  <% @posts.each do |p| %>
+    <div class="content">
+      <%= p.created_at.strftime("%b %d, %Y") %>
+      <br/>
+      Dear asshole <%= p.asshole_name %>, 
+      <br/>
+      <%= p.content %>
     </div>
-  <%
-    end
-  %>
+  <% end %>
 </div>
 
 <script type="text/javascript">

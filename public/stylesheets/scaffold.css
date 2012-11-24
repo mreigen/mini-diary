@@ -20,8 +20,21 @@ div.field, div.actions {
   margin-bottom: 10px;
 }
 
-#notice {
-  color: green;
+p.flash {
+	width: 500px;
+	margin-left: -250px;
+	position: absolute;
+	left: 50%;
+	margin-top: 40px;
+	padding: 5px;
+}
+
+p.notice {
+	color: #1B32E0;
+}
+
+p.error {
+	color: maroon;
 }
 
 .field_with_errors {

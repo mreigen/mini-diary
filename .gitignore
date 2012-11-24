@@ -47,3 +47,5 @@ spec/helpers/.DS_Store
 spec/controllers/.DS_Store
 
 public/.DS_Store
+
+*.sqlite3
