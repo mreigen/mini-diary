@@ -1,0 +1,9 @@
+<div id="post-wrapper">
+  <div class="content">
+    <%= @post.created_at.strftime("%b %d, %Y") %>
+    <br/>
+    Dear asshole <%= @post.asshole_name %>, 
+    <br/>
+    <%= @post.content %>
+  </div>
+</div>

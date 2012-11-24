@@ -1,12 +1,34 @@
-<div id="post-wrapper">
-  <h4>So many assholes, so little time...</h4>
+<%= javascript_include_tag "/javascripts/masonry.min.js" %>
+
+<div id="front-page-post-wrapper">
   <% @posts.each do |p| %>
     <div class="content">
+      <div class="user"><%= link_to User.find(p.user_id).email, user_path(User.find(p.user_id)) %></div>
       <%= p.created_at.strftime("%b %d, %Y") %>
       <br/>
       Dear asshole <%= p.asshole_name %>, 
       <br/>
-      <%= p.content %>
+      <% if p.content.length > 300 %>
+      <%= truncate(p.content, :length => 300, :separator => " ") %>
+      <%= link_to "(continue)", post_path(p.id) %>
+      <% else %>
+        <%= p.content %>
+      <% end %>
+      
+      <% if @user_owns_page %>
+      <div class="controls">
+        <%= link_to "Edit", edit_post_path(p.id) %>
+        <%= link_to "Delete", post_path(p.id), :method => :delete, :confirm => "Are you sure you want to delete this letter??" %>
+      </div>
+      <% end %>
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  window.onload = function() {
+    var wall = new Masonry( document.getElementById('front-page-post-wrapper'), {
+      columnWidth: 230
+    });
+  };
+</script>

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.by_user(current_user)
+    @posts = Post.last(10).reverse
     respond_to do |format|
       format.html
     end

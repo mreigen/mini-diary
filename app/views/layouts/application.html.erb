@@ -12,6 +12,13 @@
       <div class="container">
       <ul class="nav">
         <li>
+          <div class="logo">
+            <%= link_to posts_path do %>
+              <h1>Dear Asshole</h1>
+            <% end %>
+          </div>
+        </li>
+        <li>
           <%= link_to "Encountered new asshole today?", new_post_path %>
         </li>
         <%
@@ -35,6 +42,9 @@
         <%
         end
         %>
+        <li>
+          <h4 style="padding: 9px 0px 0px 25px">So many assholes, so little time...</h4>
+        </li>
       </ul>
       </div>
     </div>

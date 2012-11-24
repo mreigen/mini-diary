@@ -49,3 +49,5 @@ spec/controllers/.DS_Store
 public/.DS_Store
 
 *.sqlite3
+
+public/javascripts/.DS_Store
