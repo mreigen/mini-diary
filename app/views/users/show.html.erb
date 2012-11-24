@@ -7,6 +7,13 @@
       Dear asshole <%= p.asshole_name %>, 
       <br/>
       <%= p.content %>
+      
+      <% if @user_owns_page %>
+      <div class="controls">
+        <%= link_to "Edit", edit_post_path(p.id) %>
+        <%= link_to "Delete", post_path(p.id), :method => :delete %>
+      </div>
+      <% end %>
     </div>
   <% end %>
 </div>

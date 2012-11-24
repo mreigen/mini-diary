@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = Post.by_user(@user)
+    @user_owns_page = @user.id == current_user.id
     respond_to do |format|
       format.html
     end

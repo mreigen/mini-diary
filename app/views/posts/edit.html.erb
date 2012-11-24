@@ -1,0 +1,10 @@
+<div class="new-post-box">
+  <%= form_for @post do |f| %>
+  <span>Dear asshole </span>
+  <input id="asshole-name" name="post[asshole_name]" type="text" value="<%= @post.asshole_name%>"></input>
+  <span>,</span>
+  <input type="hidden" name="post[id]" value="<%= @post.id %>"></input>
+  <textarea name="post[content]" cols="0" rows="5"><%= @post.content %></textarea>
+  <button class="btn btn-large">Post</button>
+  <% end %>
+</div>
