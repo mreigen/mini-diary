@@ -10,10 +10,10 @@ end
 
 gem "devise"
 gem "jquery-rails"
-gem "sqlite3"
 
 group :test, :development do
   gem 'rspec-rails', '2.5.0'
   gem 'rspec',       '2.5.0'
   gem 'seed-fu'
+  gem "sqlite3"
 end
