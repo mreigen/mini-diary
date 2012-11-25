@@ -3,7 +3,7 @@
 <div id="front-page-post-wrapper">
   <% @posts.each do |p| %>
     <div class="content">
-      <div class="user"><%= link_to User.find(p.user_id).email, user_path(User.find(p.user_id)) %></div>
+      <div class="user"><%= link_to User.find(p.user_id).nickname, user_path(User.find(p.user_id)) %></div>
       <div class="post-date">
       <%= p.created_at.strftime("%b %d, %Y") %>
       </div>
