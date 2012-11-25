@@ -48,6 +48,10 @@ p.error {
 	color: maroon;
 }
 
+.status {
+	color: lightcoral;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;

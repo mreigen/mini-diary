@@ -1,7 +1,14 @@
 class PostsController < ApplicationController
   
   def new
-    
+    # if user was composing a new post before logging in
+    # show the post
+    unless session[:new_post].blank?
+      @status = "Please click Post when you are ready to post the letter"
+      @asshole_name = session[:new_post][:asshole_name]
+      @content = session[:new_post][:content]
+      session[:new_post] = nil
+    end
   end
   
   def index
@@ -21,12 +28,20 @@ class PostsController < ApplicationController
   end
   
   def create
-    render :text => "please login before writting a letter to an asshole" and return if current_user.blank?
-    render :text => "params in blank!" and return if params.blank?
+    render :text => "params is blank!" and return if params.blank?
     asshole_name = params[:post][:asshole_name]
     content = params[:post][:content]
-    
     render :text => "either asshole's name or letter's content is blank!" and return if asshole_name.blank? || content.blank?
+    
+    if current_user.blank? # if not logged in
+      session[:new_post] = {
+        :asshole_name => params[:post][:asshole_name], 
+        :content => params[:post][:content]
+      }
+      
+      redirect_to "/users/sign_in" and return
+    end
+    render :text => "please login before writting a letter to an asshole" and return if current_user.blank?
     
     data = params[:post]
     data.merge!({

@@ -1,9 +1,12 @@
 <div class="new-post-box">
+  <div class="status">
+    <%= @status %>
+  </div>
   <%= form_for :post do |f| %>
   <span>Dear asshole </span>
-  <input id="asshole-name" name="post[asshole_name]" type="text" placeholder="who (boss, dentist, tail-gater, land lord...)"></input>
+  <input id="asshole-name" name="post[asshole_name]" type="text" placeholder="who (boss, dentist, tail-gater, land lord...)" value="<%= @asshole_name.blank? ? '' : @asshole_name %>"></input>
   <span>,</span>
-  <textarea name="post[content]" cols="0" rows="5"></textarea>
+  <textarea name="post[content]" cols="0" rows="5"><%= @content.blank? ? '' : @content %></textarea>
   <button class="btn btn-large">Post</button>
   <% end %>
 </div>
