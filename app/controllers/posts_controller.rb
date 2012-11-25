@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    @user_owns_page = @post.user_id.to_i == current_user.id
+    @user_owns_page = @post.user_id == current_user.id
     respond_to do |format|
       format.html
       format.json { render :json => @post }
