@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = Post.by_user(@user)
+    render :text => "User has no post" and return if @posts.blank?
     @user_owns_page = @user.id == current_user.id
     respond_to do |format|
       format.html
