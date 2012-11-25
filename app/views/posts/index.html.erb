@@ -4,17 +4,19 @@
   <% @posts.each do |p| %>
     <div class="content">
       <div class="user"><%= link_to User.find(p.user_id).email, user_path(User.find(p.user_id)) %></div>
+      <div class="post-date">
       <%= p.created_at.strftime("%b %d, %Y") %>
-      <br/>
-      Dear asshole <%= p.asshole_name %>, 
-      <br/>
-      <% if p.content.length > 300 %>
-      <%= truncate(p.content, :length => 300, :separator => " ") %>
-      <%= link_to "(continue)", post_path(p.id) %>
-      <% else %>
-        <%= p.content %>
-      <% end %>
-      
+      </div>
+      <div class="body">
+        Dear asshole <%= p.asshole_name %>, 
+        <br/>
+        <% if p.content.length > 300 %>
+        <%= truncate(p.content, :length => 300, :separator => " ") %>
+        <%= link_to "(continue)", post_path(p.id) %>
+        <% else %>
+          <%= p.content %>
+        <% end %>
+      </div>
       <% if @user_owns_page %>
       <div class="controls">
         <%= link_to "Edit", edit_post_path(p.id) %>

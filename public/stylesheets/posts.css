@@ -39,6 +39,15 @@
   margin: 0 auto;  
 }
 
+.controls a {
+	font-size: 20px;
+	text-decoration: underline;
+}
+
+#front-page-post-wrapper .post-date {
+	font-size: 16px;
+}
+
 #front-page-post-wrapper .content {
   font-family: "quicksand";
   position: relative;
@@ -55,9 +64,14 @@
 	margin :80px auto;
 }
 
+
 #post-wrapper {
 	width: 750px;
 	margin: 80px auto;
+}
+
+#post-wrapper .post-date {
+	font-size: 16px;
 }
 
 #post-wrapper .content {
