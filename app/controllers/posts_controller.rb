@@ -12,10 +12,49 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.last(10).reverse
+    @page_size = 4
+    @posts = Post.last(@page_size).reverse
     respond_to do |format|
       format.html
     end
+  end
+  
+  # 
+  def paginate
+    page_size = params[:page_size]
+    to_page = params[:to_page]
+    
+    render :text => "missing page_size" and return if page_size.blank?
+    render :text => "missing to_page" and return if to_page.blank?
+    
+    page_size = page_size.to_i
+    to_page = to_page.to_i
+    
+    render :text => "page_size must be greater than 0" and return if page_size <= 0
+    render :text => "to_page must be greater than 0" and return if to_page <= 0
+    
+    to_page -= 1 # starts with 0 index
+    
+    @posts = Post.order("created_at DESC").offset(page_size * to_page).limit(page_size).all
+    
+    render :json => [] if @posts.blank?
+    
+    # reformat posts
+    @formatted_posts = []
+    max_content_length = 300
+    @posts.each do |p|
+      post = {
+        :asshole_name => p.asshole_name,
+        :content => p.content.length > max_content_length ? p.content.truncate(300) : p.content,
+        :continue => p.content.length > max_content_length,
+        :created_at => p.created_at.strftime("%b %d, %Y"),
+        :post_path => post_path(p.id),
+        :user_name => User.find(p.user_id).nickname,
+        :user_path => user_path(User.find(p.user_id))
+      }
+      @formatted_posts.push post
+    end
+    render :json => @formatted_posts unless @formatted_posts.blank?
   end
   
   def show

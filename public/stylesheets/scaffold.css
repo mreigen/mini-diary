@@ -12,9 +12,9 @@ pre {
   font-size: 11px;
 }
 
-a { color: #ccc; }
+a { color: #ccc; cursor: pointer; }
 a:visited { color: #aaa !important; }
-a:hover { color: #fff; text-decoration: none; }
+a:hover { color: #000; text-decoration: none; }
 
 .logo a {
 	color: #CCC !important;

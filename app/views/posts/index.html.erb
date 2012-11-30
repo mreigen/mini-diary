@@ -27,10 +27,48 @@
   <% end %>
 </div>
 
+<div class="older-post">
+  <a onclick="javascript: loadMore()">Older posts...</a>
+</div>
+
 <script type="text/javascript">
+  // global toPage count
+  var toPage = 1;
+  var pageSize = <%= @page_size %>;
+  
   window.onload = function() {
     var wall = new Masonry( document.getElementById('front-page-post-wrapper'), {
       columnWidth: 230
     });
   };
+  
+  function loadMore() {
+    toPage++;
+    
+    $.ajax({
+      method: "GET",
+      url: "/posts/paginate?page_size=" + pageSize + "&to_page=" + toPage,
+      success: function(data) {
+        for(var i = 0; i < data.length; i++) {
+          var post = data[i];
+          var continueContent = post.continue ? "<a href='" + post.post_path + "'>(continue)</a>" : "";
+          $("#front-page-post-wrapper").append("<div class='content'>\
+          <div class='user'><a href='" + post.user_path + "'>" + post.user_name + "</a></div>\
+          <div class='post-date'>\
+          " + post.created_at + "\
+          </div>\
+          <div class='body'>\
+            Dear Asshole " +  post.asshole_name + ", \
+            <br>\
+            " + post.content + " \
+            " + continueContent + "\
+          </div>\
+        </div>");
+        }
+        var wall = new Masonry( document.getElementById('front-page-post-wrapper'), {
+          columnWidth: 230
+        });
+      }
+    })
+  }
 </script>
