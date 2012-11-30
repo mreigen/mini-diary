@@ -68,7 +68,7 @@ class PostsController < ApplicationController
   end
   
   def create
-    render :text => "params is blank!" and return if params.blank?
+    render :text => "params is blank!" and return if params[:post].blank?
     asshole_name = params[:post][:asshole_name]
     content = params[:post][:content]
     render :text => "either asshole's name or letter's content is blank!" and return if asshole_name.blank? || content.blank?
