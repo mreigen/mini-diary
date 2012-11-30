@@ -21,6 +21,7 @@ class PostsController < ApplicationController
   
   # 
   def paginate
+    by_user_id = params[:user_id]
     page_size = params[:page_size]
     to_page = params[:to_page]
     
@@ -35,7 +36,7 @@ class PostsController < ApplicationController
     
     to_page -= 1 # starts with 0 index
     
-    @posts = Post.order("created_at DESC").offset(page_size * to_page).limit(page_size).all
+    @posts = Post.by_user_id(by_user_id).order("created_at DESC").offset(page_size * to_page).limit(page_size).all
     
     render :json => [] if @posts.blank?
     

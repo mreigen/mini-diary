@@ -5,7 +5,7 @@
       <%= p.created_at.strftime("%b %d, %Y") %>
       </div>
       <div class="body">
-        Dear asshole <%= p.asshole_name %>, 
+        Dear Asshole <%= p.asshole_name %>, 
         <br/>
         <%= p.content %>
       </div>
@@ -18,3 +18,39 @@
     </div>
   <% end %>
 </div>
+
+<div class="older-post">
+  <a onclick="javascript: loadMore()">Older posts...</a>
+</div>
+
+<script type="text/javascript">
+  // global toPage count
+  var toPage = 1;
+  var pageSize = <%= @page_size %>;
+  var userId = <%= @current_user.id %>;
+  
+  function loadMore() {
+    toPage++;
+    
+    $.ajax({
+      method: "GET",
+      url: "/posts/paginate?page_size=" + pageSize + "&to_page=" + toPage + "&user_id=" + userId,
+      success: function(data) {
+        for(var i = 0; i < data.length; i++) {
+          var post = data[i];
+          $("#post-wrapper").append("<div class='content'>\
+          <div class='user'><a href='" + post.user_path + "'>" + post.user_name + "</a></div>\
+          <div class='post-date'>\
+          " + post.created_at + "\
+          </div>\
+          <div class='body'>\
+            Dear Asshole " +  post.asshole_name + ", \
+            <br>\
+            " + post.content + " \
+          </div>\
+        </div>");
+        }
+      }
+    })
+  }
+</script>

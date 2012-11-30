@@ -2,6 +2,10 @@ class Post < ActiveRecord::Base
   has_one :user
   has_one :icon
   
+  scope :by_user_id, (lambda do |user_id|
+    where("user_id = ?", user_id).order("created_at DESC") unless user_id.blank?
+  end)
+    
   scope :by_user, (lambda do |user|
     where("user_id = ?", user.id).order("created_at DESC") unless user.blank?
   end)
