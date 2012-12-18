@@ -61,7 +61,7 @@
 
 #front-page-post-wrapper {
 	width: 80%;
-	margin :80px auto;
+	margin :40px auto;
 }
 
 .older-post {
@@ -70,6 +70,15 @@
 	font-size: 20px;
 	padding: 10px;
 	margin-bottom: 40px;
+}
+
+#quote {
+	width: 400px;
+	margin: 60px auto;
+	font-family: "quicksand";
+	font-size: 23px;
+	line-height: 28px;
+	margin-bottom: 0px;
 }
 
 #post-wrapper {
