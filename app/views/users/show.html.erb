@@ -27,7 +27,7 @@
   // global toPage count
   var toPage = 1;
   var pageSize = <%= @page_size %>;
-  var userId = <%= @current_user.id %>;
+  var userId = <%= !@current_user.blank? ? @current_user.id : "" %>;
   
   function loadMore() {
     toPage++;
