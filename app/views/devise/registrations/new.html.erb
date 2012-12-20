@@ -1,3 +1,5 @@
+<script src="/javascripts/field-hint.js"></script>
+
 <div class="log-in-form">
   <h2>Sign up</h2>
 
@@ -5,19 +7,31 @@
     <%= devise_error_messages! %>
 
     <div><%= f.label :email %>
-    <%= f.email_field :email %></div>
+    <%= f.email_field :email %>
+    <div id="user_email-hint" class="hint">NO ONE will ever see your email on this site</div>
+    </div>
   
     <div><%= f.label :nickname %>
-    <%= f.text_field :nickname %></div>
+    <%= f.text_field :nickname %>
+    <div id="user_nickname-hint" class="hint">This alias represents you on this site</div>
+    </div>
   
     <div><%= f.label :password %>
     <%= f.password_field :password %></div>
 
     <div><%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %></div>
+    <%= f.password_field :password_confirmation %>
+    <div id="user_password_confirmation-hint" class="hint">Please confirm your password</div>
+    </div>
 
     <div><%= f.submit "Sign up" %></div>
   <% end %>
 
   <%= render :partial => "devise/shared/links" %>
 </div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    setHints();
+  });
+</script>
