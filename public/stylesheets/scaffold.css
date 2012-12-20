@@ -52,6 +52,16 @@ p.error {
 	color: lightcoral;
 }
 
+.log-in-form {
+	width: 350px;
+	margin: 60px auto;
+	padding: 10px;
+}
+
+h2 {
+	margin-bottom: 20px;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;
